@@ -34,17 +34,17 @@ The steps below are based on the [`jest` template from `@nuxt/create-nuxt-app`](
 
  1. Install the prerequisite NPM packages for `@vue/test-utils` and `jest`:
 
-   ```
-   npm install -D @vue/test-utils \
-                  vue-jest@^3 \
-                  jest@^26 \
-                  babel-core@7.0.0-bridge.0 \
-                  babel-jest@^26
+    ```
+    npm install -D @vue/test-utils \
+                   vue-jest@^3 \
+                   jest@^26 \
+                   babel-core@7.0.0-bridge.0 \
+                   babel-jest@^26
 
-   npm install -D ts-jest@^26 # if using TypeScript
-   ```
+    npm install -D ts-jest@^26 # if using TypeScript
+    ```
 
- 3. Add an NPM script to run Jest CLI:
+ 2. Add an NPM script to run Jest CLI:
 
     ```js
     // <rootDir>/package.json
@@ -55,70 +55,70 @@ The steps below are based on the [`jest` template from `@nuxt/create-nuxt-app`](
     },
     ```
 
- 2. Add a Jest config:
+ 3. Add a Jest config:
 
-  ```js
-  // <rootDir>/jest.config.js
-  module.exports = {
-    moduleNameMapper: {
-      '^@/(.*)$': '<rootDir>/$1',
-      '^~/(.*)$': '<rootDir>/$1',
-      '^vue$': 'vue/dist/vue.common.js'
-    },
-    moduleFileExtensions: [
-      'ts', // if using TypeScript
-      'js',
-      'vue',
-      'json'
-    ],
-    transform: {
-      "^.+\\.ts$": "ts-jest", // if using TypeScript
-      '^.+\\.js$': 'babel-jest',
-      '.*\\.(vue)$': 'vue-jest'
-    },
-    collectCoverage: true,
-    collectCoverageFrom: [
-      '<rootDir>/components/**/*.vue',
-      '<rootDir>/pages/**/*.vue'
-    ]
-  }
-  ```
-
-  3. Add a Babel config:
-
-  ```js
-  // <rootDir>/.babelrc
-  {
-    "env": {
-      "test": {
-        "presets": [
-          [
-            "@babel/preset-env",
-            {
-              "targets": {
-                "node": "current"
-              }
-            }
-          ]
-        ]
-      }
+    ```js
+    // <rootDir>/jest.config.js
+    module.exports = {
+      moduleNameMapper: {
+        '^@/(.*)$': '<rootDir>/$1',
+        '^~/(.*)$': '<rootDir>/$1',
+        '^vue$': 'vue/dist/vue.common.js'
+      },
+      moduleFileExtensions: [
+        'ts', // if using TypeScript
+        'js',
+        'vue',
+        'json'
+      ],
+      transform: {
+        "^.+\\.ts$": "ts-jest", // if using TypeScript
+        '^.+\\.js$': 'babel-jest',
+        '.*\\.(vue)$': 'vue-jest'
+      },
+      collectCoverage: true,
+      collectCoverageFrom: [
+        '<rootDir>/components/**/*.vue',
+        '<rootDir>/pages/**/*.vue'
+      ]
     }
-  }
-  ```
+    ```
 
-  4. Create a `test` directory, containing the example test file shown below. *Note the location of the test files can be configured with the [`testMatch`](https://jestjs.io/docs/configuration#testmatch-arraystring) or [`testRegex`](https://jestjs.io/docs/configuration#testregex-string--arraystring) setting in `jest.config.js`.*
+  4. Add a Babel config:
 
-  *Example test:*
+     ```js
+     // <rootDir>/.babelrc
+     {
+       "env": {
+         "test": {
+           "presets": [
+             [
+               "@babel/preset-env",
+               {
+                 "targets": {
+                   "node": "current"
+                 }
+               }
+             ]
+           ]
+         }
+       }
+     }
+     ```
 
-  ```js
-  // <rootDir>/test/Logo.spec.js
-  import { mount } from '@vue/test-utils'
-  import Logo from '@/components/Logo.vue'
+  5. Create a `test` directory, containing the example test file shown below. *Note the location of the test files can be configured with the [`testMatch`](https://jestjs.io/docs/configuration#testmatch-arraystring) or [`testRegex`](https://jestjs.io/docs/configuration#testregex-string--arraystring) setting in `jest.config.js`.*
 
-  describe('Logo', () => {
-    test('is a Vue instance', () => {
-      const wrapper = mount(Logo)
-      expect(wrapper.vm).toBeTruthy()
-    })
-  })
-  ```
+     *Example test:*
+
+     ```js
+     // <rootDir>/test/Logo.spec.js
+     import { mount } from '@vue/test-utils'
+     import Logo from '@/components/Logo.vue'
+
+     describe('Logo', () => {
+       test('is a Vue instance', () => {
+         const wrapper = mount(Logo)
+         expect(wrapper.vm).toBeTruthy()
+       })
+     })
+     ```
