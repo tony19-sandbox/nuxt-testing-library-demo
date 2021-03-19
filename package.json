@@ -6,11 +6,19 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vue/test-utils": "^1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26",
+    "jest": "^26",
+    "ts-jest": "^26",
+    "vue-jest": "^3"
+  }
 }
