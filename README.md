@@ -1,8 +1,10 @@
-> Demo for using Nuxt with `@testing-library/vue`
+# How to Add Test Support in Nuxt Project
 
-https://stackoverflow.com/q/66637556/6277151
+This project outlines how to add [Jest](https://jestjs.io/) unit testing support to an already existing [Nuxt](https://nuxtjs.org/) project.
 
-## Project generated
+## Project Scaffolding
+
+The base project was scaffolded with [`create-nuxt-app`](https://nuxtjs.org/docs/2.x/get-started/installation/#using-create-nuxt-app) using the following settings:
 
 >     $ npx create-nuxt-app nuxt-testing-library-demo
 >
@@ -24,14 +26,14 @@ https://stackoverflow.com/q/66637556/6277151
 >     ? What is your GitHub username? tony trinh
 >     ? Version control system: Git
 
-### Adding Jest support
+## Adding Jest support
 
-The following steps demonstrate what [`create-nuxt-app` does to add Jest support](https://github.com/nuxt/create-nuxt-app/tree/d00a766/packages/cna-template/template/frameworks/jest).
+The steps below are based on the [`jest` template from `@nuxt/create-nuxt-app`](https://github.com/nuxt/create-nuxt-app/tree/d00a766/packages/cna-template/template/frameworks/jest). It installs [*Vue Test Utils*](), but you could replace that with [*Vue Testing Library*](https://testing-library.com/docs/vue-testing-library/intro/) (which transitively pulls in *Vue Test Utils*) if preferred.
 
  1. Install the prerequisite NPM packages for `@vue/test-utils` and `jest`:
 
    ```
-   npm install -D @vue/test-utils@^1 \
+   npm install -D @vue/test-utils \
                   vue-jest@^3 \
                   jest@^26 \
                   babel-core@7.0.0-bridge.0 \
@@ -102,7 +104,9 @@ The following steps demonstrate what [`create-nuxt-app` does to add Jest support
   }
   ```
 
-  4. Add a `test` directory to contain unit tests. For example:
+  4. Add a `test` directory to contain unit test files, and add the example `.spec.js` shown below. Note the location of the test files can be configured with the [`testMatch`](https://jestjs.io/docs/configuration#testmatch-arraystring) or [`testRegex`](https://jestjs.io/docs/configuration#testregex-string--arraystring) setting in `jest.config.js`.
+
+  For example:
 
   ```js
   // <rootDir>/test/Logo.spec.js
